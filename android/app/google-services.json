@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1048099801001",
+    "project_id": "flutter-firebase-practic-636a5",
+    "storage_bucket": "flutter-firebase-practic-636a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048099801001:android:9f9d3eb5c47d43c7c2a6b8",
+        "android_client_info": {
+          "package_name": "com.sughimura.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiCNx4KsU9xzF6DsEEAQwwSPpA88mfheE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
