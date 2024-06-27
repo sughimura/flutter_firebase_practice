@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1048099801001:android:9f9d3eb5c47d43c7c2a6b8",
         "android_client_info": {
-          "package_name": "com.sughimura.app"
+          "package_name": "com.example.flutter_firebase_practice"
         }
       },
       "oauth_client": [],
