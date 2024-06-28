@@ -133,6 +133,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(fontSize: 50),
                 ),
               ),
+              TextButton(onPressed: () {
+                FirebaseFirestore.instance
+                    .collection('flutterDataCollection')
+                    .doc('flutterDataDocument')
+                    .set({'autofield': "abc"}, SetOptions(merge: true));
+                }, child: const Text('登録', style: TextStyle(fontSize: 30),)
+              ),
             ],
           ),
         ),
