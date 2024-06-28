@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:go_router/go_router.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -12,17 +13,32 @@ void main() async {
   runApp(const MyApp());
 }
 
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const MyHomePage(title: 'Flutter Demo Home Page');
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'details',
+          builder: (BuildContext context, GoRouterState state) {
+            return const DetailsScreen();
+          },
+        ),
+      ],
+    ),
+  ],
+);
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp.router(
+      routerConfig: _router,
     );
   }
 }
@@ -140,8 +156,31 @@ class _MyHomePageState extends State<MyHomePage> {
                     .set({'autofield': "abc"}, SetOptions(merge: true));
                 }, child: const Text('登録', style: TextStyle(fontSize: 30),)
               ),
+              ElevatedButton(
+                onPressed: () => context.go('/details'),
+                child: const Text('Go to the Details screen'),
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The details screen
+class DetailsScreen extends StatelessWidget {
+  /// Constructs a [DetailsScreen]
+  const DetailsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Details Screen')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => context.go('/'),
+          child: const Text('Go back to the Home screen'),
         ),
       ),
     );
