@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,6 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(24),
@@ -112,6 +116,30 @@ class _MyHomePageState extends State<MyHomePage> {
                       print(e);
                     }
                   }),
+              TextButton(
+                // ボタンを押した時のイベント
+                onPressed: () {
+                  /* ここにプログラムを記載 */
+                  FirebaseFirestore.instance
+                      .collection('flutterDataCollection')
+                      .doc('flutterDataDocument')
+                      .get()
+                      .then((ref) {
+                        print(ref.get('mydata'));
+                  });
+                },
+                child: const Text(
+                  '取得',
+                  style: TextStyle(fontSize: 50),
+                ),
+              ),
+              TextButton(onPressed: () {
+                FirebaseFirestore.instance
+                    .collection('flutterDataCollection')
+                    .doc('flutterDataDocument')
+                    .set({'autofield': "abc"}, SetOptions(merge: true));
+                }, child: const Text('登録', style: TextStyle(fontSize: 30),)
+              ),
             ],
           ),
         ),
