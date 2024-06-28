@@ -121,11 +121,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   /* ここにプログラムを記載 */
                   FirebaseFirestore.instance
-                      .doc('autoCollection1/autoDocument1')
-                      .delete();
+                      .collection('flutterDataCollection')
+                      .doc('flutterDataDocument')
+                      .get()
+                      .then((ref) {
+                        print(ref.get('mydata'));
+                  });
                 },
                 child: const Text(
-                  '実行',
+                  '取得',
                   style: TextStyle(fontSize: 50),
                 ),
               ),
