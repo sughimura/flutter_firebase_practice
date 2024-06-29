@@ -13,7 +13,7 @@ class SignInPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final emailController = ref.watch(emailProvider);
-    final passwordlController = ref.watch(passwordProvider);
+    final passwordController = ref.watch(passwordProvider);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true, // AndroidのAppBarの文字を中央寄せ.
@@ -31,7 +31,7 @@ class SignInPage extends ConsumerWidget {
                 decoration: const InputDecoration(labelText: 'メールアドレス'),
               ),
               TextField(
-                controller: passwordlController,
+                controller: passwordController,
                 decoration: const InputDecoration(labelText: 'パスワード'),
                 obscureText: true,
               ),
@@ -42,7 +42,7 @@ class SignInPage extends ConsumerWidget {
                     final User? user = (await FirebaseAuth.instance
                         .createUserWithEmailAndPassword(
                         email: emailController.text,
-                        password: passwordlController.text))
+                        password: passwordController.text))
                         .user;
                     if (user != null) {}
                   } catch (e) {
@@ -58,7 +58,7 @@ class SignInPage extends ConsumerWidget {
                     final User? user = (await FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                         email: emailController.text,
-                        password: passwordlController.text))
+                        password: passwordController.text))
                         .user;
                     if (user != null) context.go('/mypage');
                   } catch (e) {
