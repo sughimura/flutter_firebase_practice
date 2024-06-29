@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-import '../details_screen.dart';
+import '../ui/page/details_screen.dart';
 import '../my_home_page.dart';
 
 final GoRouter router = GoRouter(
