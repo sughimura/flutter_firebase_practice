@@ -92,30 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       print(e);
                     }
                   }),
-              TextButton(
-                // ボタンを押した時のイベント
-                onPressed: () {
-                  /* ここにプログラムを記載 */
-                  FirebaseFirestore.instance
-                      .collection('flutterDataCollection')
-                      .doc('flutterDataDocument')
-                      .get()
-                      .then((ref) {
-                    print(ref.get('mydata'));
-                  });
-                },
-                child: const Text(
-                  '取得',
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              TextButton(onPressed: () {
-                FirebaseFirestore.instance
-                    .collection('flutterDataCollection')
-                    .doc('flutterDataDocument')
-                    .set({'autofield': "abc"}, SetOptions(merge: true));
-              }, child: const Text('登録', style: TextStyle(fontSize: 30),)
-              ),
               ElevatedButton(
                 onPressed: () => context.go('/details'),
                 child: const Text('Go to the Details screen'),
