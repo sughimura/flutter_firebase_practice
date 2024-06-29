@@ -120,6 +120,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () => context.go('/details'),
                 child: const Text('Go to the Details screen'),
               ),
+              ElevatedButton(
+                onPressed: () => context.go('/sign_in'),
+                child: const Text('Go to sign in page'),
+              ),
             ],
           ),
         ),

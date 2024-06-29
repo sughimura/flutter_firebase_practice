@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_firebase_practice/ui/auth/sign_in_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../ui/page/details_screen.dart';
@@ -12,6 +13,12 @@ final GoRouter router = GoRouter(
         return const MyHomePage(title: 'Flutter Demo Home Page');
       },
       routes: <RouteBase>[
+        GoRoute(
+          path: 'sign_in',
+          builder: (BuildContext context, GoRouterState state) {
+            return const SignInPage();
+          },
+        ),
         GoRoute(
           path: 'details',
           builder: (BuildContext context, GoRouterState state) {
