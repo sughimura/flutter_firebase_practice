@@ -44,7 +44,9 @@ class SignInPage extends ConsumerWidget {
                         email: emailController.text,
                         password: passwordController.text))
                         .user;
-                    if (user != null) {}
+                    if (user != null) {
+                      print("ユーザ登録しました ${user.email} , ${user.uid}");
+                    }
                   } catch (e) {
                     print(e);
                   }
@@ -60,7 +62,10 @@ class SignInPage extends ConsumerWidget {
                         email: emailController.text,
                         password: passwordController.text))
                         .user;
-                    if (user != null) context.go('/mypage');
+                    if (user != null) {
+                      print("ログインしました　${user.email} , ${user.uid}");
+                      context.go('/mypage');
+                    }
                   } catch (e) {
                     print(e);
                   }
