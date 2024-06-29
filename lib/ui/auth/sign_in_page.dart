@@ -71,6 +71,18 @@ class SignInPage extends ConsumerWidget {
                   }
                 },
               ),
+              ElevatedButton(
+                child: const Text('パスワードリセット'),
+                onPressed: () async {
+                  try {
+                    await FirebaseAuth.instance
+                        .sendPasswordResetEmail(email: emailController.text);
+                    print("パスワードリセット用のメールを送信しました");
+                  } catch (e) {
+                    print(e);
+                  }
+                },
+              ),
             ],
           ),
         ),
